@@ -7,6 +7,30 @@
     <groupId>org.example</groupId>
     <artifactId>Fraktale</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>annotations</artifactId>
+            <version>9.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.18.1</version>
+        </dependency>
+
+    </dependencies>
 
     <properties>
         <maven.compiler.release>15</maven.compiler.release>
