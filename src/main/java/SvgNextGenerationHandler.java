@@ -9,9 +9,11 @@ import java.io.IOException;
 
 public class SvgNextGenerationHandler extends DefaultHandler {
 
-    private FileWriter fileWriter;
+    private final int iteration;
+    private final FileWriter fileWriter;
 
-    public SvgNextGenerationHandler(FileWriter fileWriter) throws IOException {
+    public SvgNextGenerationHandler(int i, FileWriter fileWriter) {
+        iteration = i;
         this.fileWriter = fileWriter;
     }
 
@@ -19,7 +21,7 @@ public class SvgNextGenerationHandler extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         switch (qName) {
             case "polygon":
-                applyTransformation(attributes);
+                applyTransformationIfNecessary(attributes);
                 return;
             default:
                 copyStartElementToOutput(qName, attributes);
@@ -27,11 +29,25 @@ public class SvgNextGenerationHandler extends DefaultHandler {
 
     }
 
-    private void applyTransformation(Attributes attributes) {
+    private void applyTransformationIfNecessary(Attributes attributes) {
         TriangleId id = new TriangleId(attributes.getValue("id"));
         Triangle triangle = Triangle.fromCoordinates(id, attributes.getValue("points"));
+        copyToOutput(triangle);
+        if (triangle.isRelevantForIteration(iteration)) {
+            applyIteration(triangle);
+        }
+    }
+
+    private void copyToOutput(Triangle triangle) {
         try {
-            fileWriter.append(triangle.asSvgPolygon()).append("\n\t");
+            fileWriter.append(triangle.asSvgPolygon()).append("\n\t").flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void applyIteration(Triangle triangle) {
+        try {
             for (Triangle subTriangle : triangle.applyIteration()) {
                 fileWriter.append(subTriangle.asSvgPolygon()).append("\n\t");
             }

@@ -20,4 +20,14 @@ class TriangleIdTest {
         assertThat(cut.secondChild()).isEqualTo(new TriangleId(expectedSecondChild));
         assertThat(cut.thirdChild()).isEqualTo(new TriangleId(expectedThirdChild));
     }
+
+    @ParameterizedTest
+    @CsvSource({"1.2.3.4, 4, true", "1.2.3.4, 3, false", "1.2.3.4, 5, false"})
+    void shouldKnowWhetherItsRelevantForIteration(String id, int iterationToDecide, boolean expected) {
+        cut = new TriangleId(id);
+
+        boolean result = cut.isRelevantForIteration(iterationToDecide);
+
+        assertThat(result).isEqualTo(expected);
+    }
 }

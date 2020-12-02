@@ -33,7 +33,7 @@ public class Triangle {
     }
 
     public static Triangle initialTriangleCenteredAt(Point center) {
-        Vector toTop = new Vector(BigDecimal.ZERO, new BigDecimal("-100"));
+        Vector toTop = new Vector(BigDecimal.ZERO, new BigDecimal("-250"));
         Point top = center.moveBy(toTop);
         Point bottomRight = center.moveBy(toTop.rotateBy120Degree());
         Point bottomLeft = center.moveBy(toTop.rotateBy240Degree());
@@ -91,5 +91,9 @@ public class Triangle {
 
     public String idAsString() {
         return id.asString();
+    }
+
+    public boolean isRelevantForIteration(int iteration) {
+        return id.isRelevantForIteration(iteration);
     }
 }

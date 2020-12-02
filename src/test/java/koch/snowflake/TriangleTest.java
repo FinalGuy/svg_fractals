@@ -1,12 +1,19 @@
 package koch.snowflake;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.data.Percentage.withPercentage;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 
+@ExtendWith(MockitoExtension.class)
 class TriangleTest {
 
     private Triangle cut;
@@ -59,4 +66,14 @@ class TriangleTest {
                 .isCloseTo(result.vectorFromBottomLeftToTop().length(), withPercentage(99.9999999999d));
     }
 
+    @ParameterizedTest
+    @CsvSource({"true,true", "false,false"})
+    void shouldAskItsIdIfRelevantForGivenIteration(boolean answerFromId, boolean expected) {
+        TriangleId triangleId = mock(TriangleId.class);
+        cut = Triangle.fromCoordinates(triangleId, "0,0 10,10 20,20");
+
+        given(triangleId.isRelevantForIteration(23)).willReturn(answerFromId);
+
+        assertThat(cut.isRelevantForIteration(23)).isEqualTo(expected);
+    }
 }

@@ -30,4 +30,8 @@ public class TriangleId {
     public TriangleId thirdChild() {
         return new TriangleId(id + ".3");
     }
+
+    public boolean isRelevantForIteration(int iteration) {
+        return id.split("\\.").length == iteration;
+    }
 }
