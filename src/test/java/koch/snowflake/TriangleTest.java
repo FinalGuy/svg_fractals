@@ -1,26 +1,19 @@
 package koch.snowflake;
 
-import org.assertj.core.data.Offset;
-import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.data.Percentage.withPercentage;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TriangleTest {
 
     private Triangle cut;
 
-
     @Test
     void shouldPresentItselfAsSvgPolygonElement() {
-        cut = new Triangle(
-                Point.fromCommaSeparatedCoordinates("0,50"),
-                Point.fromCommaSeparatedCoordinates("100,100"),
-                Point.fromCommaSeparatedCoordinates("0,100"));
+        cut = Triangle.fromCoordinates("0,50 100,100 0,100");
 
         String result = cut.asSvgPolygon();
 
@@ -29,10 +22,7 @@ class TriangleTest {
 
     @Test
     void shouldBeConstructableFromCoordinateList() {
-        Triangle expected = new Triangle(
-                Point.fromCommaSeparatedCoordinates("0,50"),
-                Point.fromCommaSeparatedCoordinates("100,100"),
-                Point.fromCommaSeparatedCoordinates("0,100"));
+        Triangle expected = Triangle.fromCoordinates("0,50 100,100 0,100");
 
         Triangle result = Triangle.fromCoordinates("0,50 100,100 0,100");
 
@@ -41,14 +31,13 @@ class TriangleTest {
 
     @Test
     void shouldBeAbleToApplyIterationOnItself() {
-        cut = new Triangle(
-                Point.fromCommaSeparatedCoordinates("0,50"),
-                Point.fromCommaSeparatedCoordinates("100,100"),
-                Point.fromCommaSeparatedCoordinates("0,100"));
+        cut = Triangle.fromCoordinates("0,50 100,100 0,100");
 
         List<Triangle> triangles = cut.applyIteration();
 
-        assertThat(triangles).hasSize(3); // 3 smaller ones at each side.
+        // 3 smaller ones, one at each side.
+        assertThat(triangles).hasSize(3);
+        // does not contain itself
         assertThat(triangles).doesNotContain(cut);
     }
 
@@ -57,7 +46,9 @@ class TriangleTest {
 
         Triangle result = Triangle.centeredAt(Point.fromCommaSeparatedCoordinates("5,5"));
 
-        assertThat(result.vectorFromTopToBottomRight().length()).isCloseTo(result.vectorFromBottomRightToBottomLeft().length(), withPercentage(99.99999999999999d));
-        assertThat(result.vectorFromBottomRightToBottomLeft().length()).isCloseTo(result.vectorFromBottomLeftToTop().length(), withPercentage(99.99999999999999d));
+        assertThat(result.vectorFromTopToBottomRight().length())
+                .isCloseTo(result.vectorFromBottomRightToBottomLeft().length(), withPercentage(99.9999999999d));
+        assertThat(result.vectorFromBottomRightToBottomLeft().length())
+                .isCloseTo(result.vectorFromBottomLeftToTop().length(), withPercentage(99.9999999999d));
     }
 }

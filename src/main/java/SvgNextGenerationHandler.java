@@ -1,6 +1,4 @@
-import koch.snowflake.Point;
 import koch.snowflake.Triangle;
-import org.jetbrains.annotations.NotNull;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

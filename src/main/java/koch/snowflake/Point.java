@@ -28,8 +28,8 @@ public class Point {
         return x.toString() + ',' + y.toString();
     }
 
-    public Vector vectorTo(Point location) {
-        return new Vector(location.x.subtract(this.x), location.y.subtract(this.y));
+    public Vector vectorTo(Point other) {
+        return new Vector(other.x.subtract(this.x), other.y.subtract(this.y));
     }
 
     public Point moveBy(Vector vector) {
