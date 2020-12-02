@@ -27,7 +27,7 @@ public class App {
 
         File file = new File("fractal_initial.svg");
         try (FileWriter fileWriter = new FileWriter(file)) {
-            Triangle firstTriangle = Triangle.centeredAt(Point.fromCommaSeparatedCoordinates("150,150"));
+            Triangle firstTriangle = Triangle.initialTriangleCenteredAt(Point.fromCommaSeparatedCoordinates("150,150"));
             fileWriter.append(initial.replace("#FIRST", firstTriangle.asSvgPolygon()));
         }
 

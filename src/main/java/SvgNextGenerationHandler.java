@@ -1,4 +1,5 @@
 import koch.snowflake.Triangle;
+import koch.snowflake.TriangleId;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -27,7 +28,8 @@ public class SvgNextGenerationHandler extends DefaultHandler {
     }
 
     private void applyTransformation(Attributes attributes) {
-        Triangle triangle = Triangle.fromCoordinates(attributes.getValue("points"));
+        TriangleId id = new TriangleId(attributes.getValue("id"));
+        Triangle triangle = Triangle.fromCoordinates(id, attributes.getValue("points"));
         try {
             fileWriter.append(triangle.asSvgPolygon()).append("\n\t");
             for (Triangle subTriangle : triangle.applyIteration()) {
@@ -52,7 +54,7 @@ public class SvgNextGenerationHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         switch (qName) {
             case "polygon":
                 break;
@@ -70,7 +72,7 @@ public class SvgNextGenerationHandler extends DefaultHandler {
     }
 
     @Override
-    public void ignorableWhitespace(char[] ch, int start, int length) throws SAXException {
+    public void ignorableWhitespace(char[] ch, int start, int length) {
         this.writeToOutput(ch, start, length);
     }
 
