@@ -30,7 +30,7 @@ public class App {
         File file = new File("fractal_0.svg");
         try (FileWriter fileWriter = new FileWriter(file)) {
             Triangle firstTriangle = Triangle.initialTriangleCenteredAt(Point.fromCommaSeparatedCoordinates("500,500"));
-            fileWriter.append(initial.replace("#FIRST", firstTriangle.asSvgPolygon()));
+            fileWriter.append(initial.replace("#FIRST", firstTriangle.asSvg()));
         }
 
         for (int i = 0; i <= ITERATIONS; i++) {
@@ -39,7 +39,7 @@ public class App {
             try (FileWriter outputWriter = new FileWriter(output, false)) {
                 SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
                 SAXParser saxParser = saxParserFactory.newSAXParser();
-                saxParser.parse(input, new SvgNextGenerationHandler(i + 1, outputWriter));
+                saxParser.parse(input, new SvgNextGenerationHandler(outputWriter));
             }
         }
 

@@ -14,9 +14,6 @@ import static java.math.RoundingMode.HALF_UP;
 @EqualsAndHashCode
 public class Vector {
 
-    public static final BigDecimal COS_60_DEGREE = BigDecimal.valueOf(cos(toRadians(60.0d)));
-    public static final BigDecimal SIN_60_DEGREE = BigDecimal.valueOf(sin(toRadians(60.0d)));
-
     private final BigDecimal x, y;
 
     public Vector(BigDecimal x, BigDecimal y) {
@@ -62,5 +59,9 @@ public class Vector {
         BigDecimal newX = x.multiply(cos).subtract(y.multiply(sin));
         BigDecimal newY = x.multiply(sin).add(y.multiply(cos));
         return new Vector(newX, newY);
+    }
+
+    public Line startingAt(Point start) {
+        return new Line(start, start.moveBy(this));
     }
 }

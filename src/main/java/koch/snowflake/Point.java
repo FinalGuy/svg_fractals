@@ -19,9 +19,11 @@ public class Point {
 
     public static Point fromCommaSeparatedCoordinates(String commaSeparatedCoordinates) {
         String[] coordinates = commaSeparatedCoordinates.split(",");
-        BigDecimal x = new BigDecimal(coordinates[0]);
-        BigDecimal y = new BigDecimal(coordinates[1]);
-        return new Point(x, y);
+        return fromCoordinates(coordinates[0], coordinates[1]);
+    }
+
+    public static Point fromCoordinates(String x, String y) {
+        return new Point(new BigDecimal(x), new BigDecimal(y));
     }
 
     public String asCommaSeparatedCoordinates() {
@@ -34,5 +36,13 @@ public class Point {
 
     public Point moveBy(Vector vector) {
         return new Point(this.x.add(vector.x()), this.y.add(vector.y()));
+    }
+
+    public BigDecimal x() {
+        return x;
+    }
+
+    public BigDecimal y() {
+        return y;
     }
 }
