@@ -9,7 +9,7 @@ import java.io.*;
 
 public class App {
 
-    private static final int ITERATIONS = 5;
+    private static final int ITERATIONS = 9;
 
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
 

@@ -19,15 +19,6 @@ public class Triangle {
         this.bottomLeft = bottomLeft;
     }
 
-    public static Triangle fromCoordinates(String coordinates) {
-        String[] attributeEntries = coordinates.split(" ");
-        Point[] points = new Point[3];
-        for (int i = 0; i < attributeEntries.length; i++) {
-            points[i] = Point.fromCommaSeparatedCoordinates(attributeEntries[i]);
-        }
-        return new Triangle(points[0], points[1], points[2]);
-    }
-
     public static Triangle initialTriangleCenteredAt(Point center) {
         Vector toTop = new Vector(BigDecimal.ZERO, new BigDecimal("-250"));
         Point top = center.moveBy(toTop);
@@ -37,11 +28,11 @@ public class Triangle {
     }
 
     public String asSvg() {
-        return top.vectorTo(bottomRight).startingAt(top).asSvg() +
+        return new Line(top, bottomRight).asSvg() +
                 "\n\t" +
-                bottomRight.vectorTo(bottomLeft).startingAt(bottomRight).asSvg() +
+                new Line(bottomRight, bottomLeft).asSvg() +
                 "\n\t" +
-                bottomLeft.vectorTo(top).startingAt(bottomLeft).asSvg() +
+                new Line(bottomLeft, top).asSvg() +
                 "\n\t";
     }
 

@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.data.Percentage.withPercentage;
 
@@ -14,7 +16,11 @@ class TriangleTest {
 
     @Test
     void shouldPresentItselfAsSetOfSvgLineElements() {
-        cut = Triangle.fromCoordinates("0,50 100,100 0,100");
+        cut = new Triangle(
+                new Point(BigDecimal.ZERO, new BigDecimal("50")),
+                new Point(new BigDecimal("100"), new BigDecimal("100")),
+                new Point(BigDecimal.ZERO, new BigDecimal("100"))
+        );
 
         String result = cut.asSvg();
 
@@ -23,17 +29,6 @@ class TriangleTest {
         assertThat(result).containsPattern("<line x1=\"0\" y1=\"100\" x2=\"0\" y2=\"50\" stroke=\".*\" />");
     }
 
-    @Test
-    void shouldBeConstructableFromCoordinateList() {
-        Triangle expected = new Triangle(
-                Point.fromCommaSeparatedCoordinates("0,50"),
-                Point.fromCommaSeparatedCoordinates("100,100"),
-                Point.fromCommaSeparatedCoordinates("0,100"));
-
-        Triangle result = Triangle.fromCoordinates("0,50 100,100 0,100");
-
-        assertThat(result).isEqualTo(expected);
-    }
 
     @Test
     void shouldBeAbleToConstructItselfAtAnyGivenPointAsCenter() {

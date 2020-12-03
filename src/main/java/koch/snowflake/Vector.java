@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 
 import static java.lang.Math.*;
 import static java.math.MathContext.DECIMAL128;
-import static java.math.MathContext.DECIMAL64;
 import static java.math.RoundingMode.HALF_UP;
 
 @ToString
@@ -25,10 +24,6 @@ public class Vector {
         BigDecimal newX = this.x.divide(new BigDecimal("3"), DECIMAL128);
         BigDecimal newY = this.y.divide(new BigDecimal("3"), DECIMAL128);
         return new Vector(newX, newY);
-    }
-
-    public Vector rotateBySixtyDegree() {
-        return rotateByDegree(-60.00d);
     }
 
     public BigDecimal x() {
