@@ -41,7 +41,7 @@ public class SvgTurtle implements Turtle {
     public void moveForward() throws Exception {
         Point newPosition = currentPosition.moveBy(currentDirection);
         Line line = new Line(currentPosition, newPosition);
-        fileWriter.append(line.asSvg());
+        fileWriter.append(line.asSvg()).append("\n").flush();
         this.currentPosition = newPosition;
     }
 

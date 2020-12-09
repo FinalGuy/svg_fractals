@@ -9,7 +9,7 @@ import static io.torbin.fractals.RotationAngle.SIXTY_DEGREE;
 
 public class App {
 
-    private static final int ITERATIONS = 7;
+    private static final int ITERATIONS = 6;
 
     public static void main(String[] args) throws Exception {
         for (int iteration = 0; iteration < ITERATIONS; iteration++) {

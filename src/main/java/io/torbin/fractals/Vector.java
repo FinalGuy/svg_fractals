@@ -6,7 +6,7 @@ import lombok.ToString;
 import java.math.BigDecimal;
 
 import static java.lang.Math.*;
-import static java.math.MathContext.DECIMAL128;
+import static java.math.MathContext.DECIMAL32;
 import static java.math.RoundingMode.HALF_UP;
 
 @ToString
@@ -30,26 +30,14 @@ public class Vector {
         return y;
     }
 
-    public BigDecimal length() {
-        return x.pow(2).add(y.pow(2)).sqrt(DECIMAL128);
-    }
-
-    public Vector rotateBy120Degree() {
-        return rotateByDegree(120);
-    }
-
-    public Vector rotateBy240Degree() {
-        return rotateByDegree(240);
-    }
-
     public Vector rotateByDegree(RotationAngle rotationAngle) {
         return rotateByDegree(rotationAngle.asDouble());
     }
 
     public Vector rotateByDegree(double degreeOfRotation) {
         double radians = toRadians(degreeOfRotation);
-        BigDecimal cos = new BigDecimal(cos(radians), DECIMAL128).setScale(10, HALF_UP);
-        BigDecimal sin = new BigDecimal(sin(radians), DECIMAL128).setScale(10, HALF_UP);
+        BigDecimal cos = new BigDecimal(cos(radians), DECIMAL32).setScale(10, HALF_UP);
+        BigDecimal sin = new BigDecimal(sin(radians), DECIMAL32).setScale(10, HALF_UP);
 
         BigDecimal newX = x.multiply(cos).subtract(y.multiply(sin));
         BigDecimal newY = x.multiply(sin).add(y.multiply(cos));
