@@ -1,4 +1,4 @@
-package koch.snowflake;
+package io.torbin.fractals;
 
 import org.junit.jupiter.api.Test;
 
