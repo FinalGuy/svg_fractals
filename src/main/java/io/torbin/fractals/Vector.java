@@ -1,4 +1,4 @@
-package koch.snowflake;
+package io.torbin.fractals;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -13,17 +13,13 @@ import static java.math.RoundingMode.HALF_UP;
 @EqualsAndHashCode
 public class Vector {
 
+    public static final Vector ONE_UNIT_ALONG_X_AXIS = new Vector(BigDecimal.ONE, BigDecimal.ZERO);
+
     private final BigDecimal x, y;
 
     public Vector(BigDecimal x, BigDecimal y) {
         this.x = x;
         this.y = y;
-    }
-
-    public Vector scaleToOneThird() {
-        BigDecimal newX = this.x.divide(new BigDecimal("3"), DECIMAL128);
-        BigDecimal newY = this.y.divide(new BigDecimal("3"), DECIMAL128);
-        return new Vector(newX, newY);
     }
 
     public BigDecimal x() {
@@ -46,6 +42,10 @@ public class Vector {
         return rotateByDegree(240);
     }
 
+    public Vector rotateByDegree(RotationAngle rotationAngle) {
+        return rotateByDegree(rotationAngle.asDouble());
+    }
+
     public Vector rotateByDegree(double degreeOfRotation) {
         double radians = toRadians(degreeOfRotation);
         BigDecimal cos = new BigDecimal(cos(radians), DECIMAL128).setScale(10, HALF_UP);
@@ -56,7 +56,9 @@ public class Vector {
         return new Vector(newX, newY);
     }
 
-    public Line startingAt(Point start) {
-        return new Line(start, start.moveBy(this));
+    public Vector scaleBy(ScalingFactor scalingFactor) {
+        BigDecimal newX = scalingFactor.applyTo(x);
+        BigDecimal newY = scalingFactor.applyTo(y);
+        return new Vector(newX, newY);
     }
 }

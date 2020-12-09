@@ -1,5 +1,6 @@
-package koch.snowflake;
+package io.torbin.fractals.svg;
 
+import io.torbin.fractals.Point;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

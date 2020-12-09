@@ -1,4 +1,4 @@
-package koch.snowflake;
+package io.torbin.fractals;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 @ToString
 @EqualsAndHashCode
 public class Point {
+
+    public static final Point ORIGIN = new Point(BigDecimal.ZERO, BigDecimal.ZERO);
 
     private final BigDecimal x;
     private final BigDecimal y;
@@ -25,11 +27,7 @@ public class Point {
     public static Point fromCoordinates(String x, String y) {
         return new Point(new BigDecimal(x), new BigDecimal(y));
     }
-
-    public String asCommaSeparatedCoordinates() {
-        return x.toString() + ',' + y.toString();
-    }
-
+    
     public Vector vectorTo(Point other) {
         return new Vector(other.x.subtract(this.x), other.y.subtract(this.y));
     }

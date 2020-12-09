@@ -1,5 +1,8 @@
-package koch.snowflake;
+package io.torbin.fractals.svg;
 
+import io.torbin.fractals.Line;
+import io.torbin.fractals.Point;
+import io.torbin.fractals.Vector;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
