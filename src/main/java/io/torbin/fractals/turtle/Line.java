@@ -12,10 +12,10 @@ public class Line {
 
     public String asSvg() {
         return String.format("<line x1=\"%s\" y1=\"%s\" x2=\"%s\" y2=\"%s\" stroke=\"red\" stroke-width=\"1\" />",
-                start.x(),
-                start.y(),
-                end.x(),
-                end.y());
+                start.x().doubleValue(),
+                start.y().doubleValue(),
+                end.x().doubleValue(),
+                end.y().doubleValue());
     }
 
 }
