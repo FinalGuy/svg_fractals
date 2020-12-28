@@ -11,7 +11,7 @@ import static io.torbin.fractals.turtle.TurtleCommands.*;
  * The Lindenmayer-System (or L-System for short) for constructing the Koch-Snowflake that starts with a pentagram
  * instead of a triangle.
  */
-public final class KochPentaflakeInvertedLSystem {
+public final class KochPentaflakeInvertedLSystem implements LindenmayerSystem {
 
     private static final String F = String.valueOf(FORWARD);
     private static final String L = String.valueOf(ROTATE_LEFT);
@@ -35,7 +35,7 @@ public final class KochPentaflakeInvertedLSystem {
 
     private static final Function<String, String> PRODUCTION_RULE = s -> s.replace(F, F + R + F + L + L + F + R + F);
 
-    public static TurtleCommands iterate(int times) {
+    public TurtleCommands iterate(int times) {
         String result = INITIAL_WORD;
         for (int i = 0; i < times; i++) {
             result = PRODUCTION_RULE.apply(result);

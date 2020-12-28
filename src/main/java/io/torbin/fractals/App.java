@@ -42,7 +42,7 @@ public class App {
         Vector initialDirection = Vector.ONE_UNIT_ALONG_X_AXIS
                 .scaleBy(new ScalingFactor("500"))
                 .scaleBy(ScalingFactor.oneThirdPerIteration(iteration));
-        TurtleCommands turtleCommands = KochSnowflakeLSystem.iterate(iteration);
+        TurtleCommands turtleCommands = new KochSnowflakeLSystem().iterate(iteration);
         turtleCommands.applyTo(turtle, initialPosition, initialDirection, SIXTY_DEGREE);
     }
 
@@ -53,7 +53,7 @@ public class App {
         Vector initialDirection = Vector.ONE_UNIT_ALONG_X_AXIS
                 .scaleBy(new ScalingFactor("400"))
                 .scaleBy(ScalingFactor.oneThirdPerIteration(iteration));
-        TurtleCommands turtleCommands = KochPentaflakeLSystem.iterate(iteration);
+        TurtleCommands turtleCommands = new KochPentaflakeLSystem().iterate(iteration);
         turtleCommands.applyTo(turtle, initialPosition, initialDirection, new RotationAngle(72));
     }
 
@@ -64,7 +64,7 @@ public class App {
         Vector initialDirection = Vector.ONE_UNIT_ALONG_X_AXIS
                 .scaleBy(new ScalingFactor("400"))
                 .scaleBy(ScalingFactor.oneThirdPerIteration(iteration));
-        TurtleCommands turtleCommands = KochPentaflakeInvertedLSystem.iterate(iteration);
+        TurtleCommands turtleCommands = new KochPentaflakeInvertedLSystem().iterate(iteration);
         turtleCommands.applyTo(turtle, initialPosition, initialDirection, new RotationAngle(72));
     }
 }    

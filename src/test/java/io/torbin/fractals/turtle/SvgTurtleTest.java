@@ -42,7 +42,7 @@ class SvgTurtleTest {
         Vector result = cut.currentDirection();
 
         assertThat(result.x()).isCloseTo(BigDecimal.ZERO, Percentage.withPercentage(99.999999999));
-        assertThat(result.y()).isCloseTo(BigDecimal.ONE, Percentage.withPercentage(99.999999999));
+        assertThat(result.y()).isCloseTo(new BigDecimal("-1"), Percentage.withPercentage(99.999999999));
     }
 
     @Test
@@ -52,6 +52,6 @@ class SvgTurtleTest {
         Vector result = cut.currentDirection();
 
         assertThat(result.x()).isCloseTo(BigDecimal.ZERO, Percentage.withPercentage(99.999999999));
-        assertThat(result.y()).isCloseTo(new BigDecimal("-1"), Percentage.withPercentage(99.999999999));
+        assertThat(result.y()).isCloseTo(BigDecimal.ONE, Percentage.withPercentage(99.999999999));
     }
 }

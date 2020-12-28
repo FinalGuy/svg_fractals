@@ -16,7 +16,7 @@ class LineTest {
 
         String result = cut.asSvg();
 
-        assertThat(result).matches("<line x1=\"0\" y1=\"1\" x2=\"10\" y2=\"10\" (stroke=\".*\")?(stroke-width=\".*\")? />");
+        assertThat(result).matches("<line x1=\"0.0\" y1=\"1.0\" x2=\"10.0\" y2=\"10.0\" (stroke=\".*\")?(stroke-width=\".*\")? />");
     }
 
 }
