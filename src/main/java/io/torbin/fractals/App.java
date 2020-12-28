@@ -1,11 +1,11 @@
 package io.torbin.fractals;
 
-import io.torbin.fractals.svg.SvgTurtle;
+import io.torbin.fractals.turtle.*;
 
 import java.io.File;
 import java.io.FileWriter;
 
-import static io.torbin.fractals.RotationAngle.SIXTY_DEGREE;
+import static io.torbin.fractals.turtle.RotationAngle.SIXTY_DEGREE;
 
 public class App {
 

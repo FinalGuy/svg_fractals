@@ -1,6 +1,4 @@
-package io.torbin.fractals.svg;
-
-import io.torbin.fractals.*;
+package io.torbin.fractals.turtle;
 
 import java.io.Writer;
 
@@ -18,30 +16,29 @@ public class SvgTurtle implements Turtle {
             """;
     private static final String SVG_FOOTER = "</svg>\n";
 
-    private final Writer fileWriter;
+    private final Writer writer;
 
     private Point currentPosition;
     private Vector currentDirection;
     private RotationAngle rotationAngle;
 
     public SvgTurtle(Writer writer) {
-        this.fileWriter = writer;
+        this.writer = writer;
     }
-
 
     @Override
     public void start(Point initialPosition, Vector initialDirection, RotationAngle rotationAngle) throws Exception {
         this.currentPosition = initialPosition;
         this.currentDirection = initialDirection;
         this.rotationAngle = rotationAngle;
-        fileWriter.append(SVG_HEADER).flush();
+        writer.append(SVG_HEADER).flush();
     }
 
     @Override
     public void moveForward() throws Exception {
         Point newPosition = currentPosition.moveBy(currentDirection);
         Line line = new Line(currentPosition, newPosition);
-        fileWriter.append(line.asSvg()).append("\n").flush();
+        writer.append(line.asSvg()).append("\n").flush();
         this.currentPosition = newPosition;
     }
 
@@ -57,8 +54,8 @@ public class SvgTurtle implements Turtle {
 
     @Override
     public void end() throws Exception {
-        fileWriter.append(SVG_FOOTER);
-        fileWriter.close();
+        writer.append(SVG_FOOTER);
+        writer.close();
     }
 
     public Vector currentDirection() {

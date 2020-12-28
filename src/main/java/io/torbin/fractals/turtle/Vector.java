@@ -1,4 +1,4 @@
-package io.torbin.fractals;
+package io.torbin.fractals.turtle;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

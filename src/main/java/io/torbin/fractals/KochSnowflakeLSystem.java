@@ -1,5 +1,7 @@
 package io.torbin.fractals;
 
+import io.torbin.fractals.turtle.TurtleCommands;
+
 import java.util.List;
 import java.util.function.Function;
 

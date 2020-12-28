@@ -1,5 +1,6 @@
 package io.torbin.fractals;
 
+import io.torbin.fractals.turtle.TurtleCommands;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

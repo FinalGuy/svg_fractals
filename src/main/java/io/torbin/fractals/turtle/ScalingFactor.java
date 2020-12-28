@@ -1,4 +1,4 @@
-package io.torbin.fractals;
+package io.torbin.fractals.turtle;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

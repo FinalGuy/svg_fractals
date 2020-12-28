@@ -1,4 +1,4 @@
-package io.torbin.fractals;
+package io.torbin.fractals.turtle;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -6,9 +6,9 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static io.torbin.fractals.RotationAngle.SIXTY_DEGREE;
-import static io.torbin.fractals.Point.ORIGIN;
-import static io.torbin.fractals.Vector.ONE_UNIT_ALONG_X_AXIS;
+import static io.torbin.fractals.turtle.Point.ORIGIN;
+import static io.torbin.fractals.turtle.RotationAngle.SIXTY_DEGREE;
+import static io.torbin.fractals.turtle.Vector.ONE_UNIT_ALONG_X_AXIS;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.times;

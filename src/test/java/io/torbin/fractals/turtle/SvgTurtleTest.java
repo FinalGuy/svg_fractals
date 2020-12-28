@@ -1,8 +1,5 @@
-package io.torbin.fractals.svg;
+package io.torbin.fractals.turtle;
 
-import io.torbin.fractals.Line;
-import io.torbin.fractals.RotationAngle;
-import io.torbin.fractals.Vector;
 import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,8 +9,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.CharArrayWriter;
 import java.math.BigDecimal;
 
-import static io.torbin.fractals.Point.ORIGIN;
-import static io.torbin.fractals.Vector.ONE_UNIT_ALONG_X_AXIS;
+import static io.torbin.fractals.turtle.Point.ORIGIN;
+import static io.torbin.fractals.turtle.Vector.ONE_UNIT_ALONG_X_AXIS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
