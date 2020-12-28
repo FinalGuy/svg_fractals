@@ -1,5 +1,7 @@
 # SVG fractals
 Computing SVGs of well known fractal 2D shapes.
+
+Requires Java 15.
  
 ## Koch snowflake
 ![Koch Snowflake](https://github.com/FinalGuy/svg_fractals/blob/master/koch_snowflake.svg?raw=true)
