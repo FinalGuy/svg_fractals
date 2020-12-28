@@ -44,12 +44,12 @@ public class SvgTurtle implements Turtle {
 
     @Override
     public void rotateLeft() {
-        currentDirection = currentDirection.rotateByDegree(rotationAngle);
+        currentDirection = currentDirection.rotateByDegree(rotationAngle.negate());
     }
 
     @Override
     public void rotateRight() {
-        currentDirection = currentDirection.rotateByDegree(rotationAngle.negate());
+        currentDirection = currentDirection.rotateByDegree(rotationAngle);
     }
 
     @Override
