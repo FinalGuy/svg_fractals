@@ -24,6 +24,7 @@ public class Fractals {
             Example: `Fractals snow 4`
             """;
 
+
     public static void main(String[] args) throws Exception {
         if (args.length < 2) {
             System.out.println("Missing parameter.\n");
