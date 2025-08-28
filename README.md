@@ -3,10 +3,10 @@
 Erzeugt SVG-Dateien bekannter Fraktalformen wie z. B. die **Koch-Schneeflocke** oder den **Koch-Pentaflake**.
 
 - Koch snowflake
-![Koch Snowflake](https://github.com/FinalGuy/svg_fractals/blob/master/koch_snowflake.svg?raw=true)
+![Koch Snowflake](https://github.com/FinalGuy/svg_fractals/blob/main/koch_snowflake.svg?raw=true)
 
 - Koch "pentaflake"
-![Koch Pentaflake](https://github.com/FinalGuy/svg_fractals/blob/master/koch_pentaflake.svg?raw=true)
+![Koch Pentaflake](https://github.com/FinalGuy/svg_fractals/blob/main/koch_pentaflake.svg?raw=true)
 
 ---
 
